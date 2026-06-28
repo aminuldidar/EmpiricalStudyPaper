@@ -93,27 +93,26 @@ This dataset is used to evaluate both human agreement and automated compliance c
 | `human_agreement`           | String        | Final consensus outcome after reconciliation.                                     |
 
 ---
-
 # 📈 Verification Benchmark Metrics
 
 Running the evaluation over `human_oracle_cross_validation.csv` yields the following benchmark results.
 
 | Metric                            |   Value |
 | --------------------------------- | ------: |
-| Evaluation Population             |     754 |
+| Evaluation Population             |   1,130 |
 | Precision                         |  98.44% |
-| Recall                            | 100.00% |
-| F1-Score                          |  99.21% |
-| Accuracy                          |  98.54% |
-| Human Inter-Rater Reliability (κ) |  0.8780 |
-| Oracle vs. Human Consensus (κ)    |  0.8894 |
+| Recall                            |  93.92% |
+| F1-Score                          |  96.12% |
+| Accuracy                          |  95.04% |
+| Human Inter-Rater Reliability (κ) |  0.8926 |
+| Oracle vs. Human Consensus (κ)    |  0.8926 |
 
 ### Confusion Matrix
 
 |                   | Predicted Positive (Compliant) | Predicted Negative (Debt) |
 | ----------------- | -----------------------------: | ------------------------: |
-| **True Positive** |                            695 |                        11 |
-| **True Negative** |                              0 |                        48 |
+| **Actual Positive (Compliant)** | 695 | 45 |
+| **Actual Negative (Debt)**      | 11  | 379 |
 
 ---
 

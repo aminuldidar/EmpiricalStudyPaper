@@ -343,6 +343,7 @@ license_mapping = {
     "custom": "Custom",
     "Private": "Custom",
     "Internal": "Custom",
+    "NOASSERTION": "Custom",
 
     # Unknown
     "Unknown": "Unknown",
@@ -355,7 +356,6 @@ license_mapping = {
     "Unspecified": "Unknown",
     "No assertion": "Unknown",
     "no assertion": "Unknown",
-    "NOASSERTION": "Unknown",
     "undefined": "Unknown",
     "Undefined": "Unknown",
     "<undefined>": "Unknown",
@@ -367,6 +367,7 @@ license_mapping = {
     "n/a": "Unknown",
     "NA": "Unknown",
     "na": "Unknown",
+    "No License File Found": "Custom",
 }
 
 
