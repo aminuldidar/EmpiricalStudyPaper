@@ -59,7 +59,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 **Description**
 
-The complete dual-annotated validation corpus contains **754** method pairs independently reviewed by human experts using a double-blind annotation protocol.
+The complete dual-annotated validation corpus contains **1,130** method pairs independently reviewed by human experts using a double-blind annotation protocol.
 
 **Primary Use**
 
