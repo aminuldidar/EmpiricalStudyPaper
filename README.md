@@ -1,4 +1,4 @@
-# Replication Package: Ecosystem-Scale Method-Level License Compliance Tracking
+# Replication Package: The Shadow Supply Chain: An Empirical Study of Method-Level License Violations in 1M Repositories
 
 This repository contains the replication package, anonymized datasets, and validation data accompanying our empirical study on cross-boundary open-source code reuse and license debt propagation across enterprise software ecosystems.
 
@@ -20,7 +20,7 @@ This repository contains the replication package, anonymized datasets, and valid
 | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `README.md`                                  | Documentation for the replication package.                                                                                                                             |
 | `downsized_compliance_empirical_dataset.csv` | Production empirical dataset containing 197,557 method-level reuse records.                                                                                            |
-| `human_oracle_cross_validation.csv`          | Dual-annotated ground-truth validation dataset containing 754 audited method pairs.                                                                                    |
+| `human_oracle_cross_validation.csv`          | Dual-annotated ground-truth validation dataset containing 1,130 audited method pairs.                                                                                    |
 | `data_analysis_script.ipynb`                 | Jupyter notebook reproducing the empirical analyses, statistical summaries, tables, and evaluation results reported in the paper.                                      |
 | `DSR_engine.py`                              | Python implementation of the DSR (Detection, Similarity, and Reasoning) engine used to identify license compliance violations and generate compliance classifications. |
 | `verify_package.ipynb`                       | Jupyter notebook for verifying the replication package by loading the datasets, reproducing the reported benchmark metrics, and validating the experimental pipeline.  |
