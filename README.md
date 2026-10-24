@@ -4,8 +4,6 @@ This repository contains the replication package, anonymized datasets, and valid
 
 This package is provided anonymized for double-blind review; the full artifact, including the mining pipeline source code, will be released as a permanent, citable archive on Zenodo once the paper is accepted (the one file already hosted on Zenodo today, `full_compliance_empirical_dataset.csv`, is there purely due to GitHub's file-size limit, not anonymization).
 
-**This is the clean, upload-ready copy of the package** (2026-10-24), split out from the working directory used to build it. The working directory had a live `.git/` history (real author name, email, and GitHub remote) and a `.env` file sitting alongside the actual deliverable files -- neither belongs in an anonymized, double-blind package. This copy contains only the real deliverable files listed below; `verify_package.ipynb` was re-executed from this copy and runs clean (0 errors).
-
 ---
 
 ## 📂 Repository Structure
@@ -33,7 +31,7 @@ This package is provided anonymized for double-blind review; the full artifact, 
 | `README.md`                                  | Documentation for the replication package.                                                                                                                             |
 | `MINER_SETUP.md`                             | Operational model of the mining pipeline that produced these datasets (CLI usage, credential policy, hashing, revisit behavior), shared across companion packages.    |
 | `downsized_compliance_empirical_dataset.csv` | Production empirical dataset containing 197,557 method-level reuse records.                                                                                            |
-| `human_validation.csv`                       | Dual-annotated, independently re-verified validation dataset containing 1,130 audited method pairs, used for reporting human-agreement and resolution statistics.      |
+| `human_validation.csv`                       | Dual-annotated, independently re-verified validation dataset containing 1,129 audited method pairs, used for reporting human-agreement and resolution statistics.      |
 | `compatibility_matrix.csv` / `.png`          | The top-5 directional license-compatibility matrix reported in the paper, and the figure rendered from it.                                                             |
 | `incompatibility_matrix.csv` / `.png`        | The top-5 directional license-incompatibility matrix reported in the paper, and the figure rendered from it.                                                           |
 | `full_compliance_empirical_dataset.csv`       | **Hosted on Zenodo: [DOI PLACEHOLDER — fill in after upload].** The full 530,132-record corpus the two matrices above are computed from. Not included here because it exceeds GitHub's 100MB per-file limit without Git LFS; Zenodo supports it directly (up to 50GB per file). |
@@ -75,7 +73,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 **Description**
 
-The complete dual-annotated validation corpus contains **1,130** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
+The complete dual-annotated validation corpus contains **1,129** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
 
 **Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. During replication-package validation, several of its columns were found to be unreliable or redundant and were dropped rather than shipped; others were renamed for clarity. Both are documented below so the cleaning decisions are auditable without requiring the raw file itself.
 
@@ -100,35 +98,35 @@ The complete dual-annotated validation corpus contains **1,130** method pairs in
 | Column Name | Type | Description |
 | --- | --- | --- |
 | `repo_unreachable` | Boolean | True if either repository returned 404 during independent re-verification (repository since deleted, renamed, or moved — "digital decay"). |
-| `resolution_category` | Integer (1–5) | The row's resolved category. Populated for all 1,130 rows. |
-| `resolution_method` | String | `unanimous_human_agreement` (1,112 rows — the two human raters agreed), `resolved_by_author_review` (12 rows — genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows — see below), or `possible_detector_limitation_unverified` (1 row — a discrepancy explained by a known GitHub license-detector limitation, not an annotator error). |
+| `resolution_category` | Integer (1–5) | The row's resolved category. Populated for all 1,129 rows. |
+| `resolution_method` | String | `unanimous_human_agreement` (1,111 rows — the two human raters agreed), `resolved_by_author_review` (12 rows — genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows — see below), or `possible_detector_limitation_unverified` (1 row — a discrepancy explained by a known GitHub license-detector limitation, not an annotator error). |
 | `pending_review_note` | String | Plain-language note explaining why a row isn't a simple unanimous human agreement; does not imply which original rating is correct. |
 
 ### Full schema (self-contained, not a diff)
 
-| Column Name | Type | Description |
-| --- | --- | --- |
-| `organization_name` | String | Enterprise workspace identifier (e.g., Microsoft, Oracle). |
-| `project_type` | Integer | Internal categorical pipeline tracking identifier. |
-| `hash` | String (Hex) | Cryptographic structural signature used across the extraction pipeline. |
-| `source_method_name` | String | Original method identifier at the source repository. |
-| `sink_method_name` | String | Method identifier at the destination repository. |
-| `source_repository_url` | String (URL) | Fully qualified URL to the upstream repository. |
-| `sink_repository_url` | String (URL) | Fully qualified URL to the downstream repository. |
-| `source_file_location` | String | Source file path and starting line number. |
-| `sink_file_location` | String | Destination file path and starting line number. |
-| `violation` | String | License conflict message (e.g., `GPL-2.0-only` incompatible with `GPL-3.0-only`). |
-| `relational_id` | String | Internal identifier linking extraction sessions. |
-| `source_repo_level_license` | String (SPDX) | Repository-level SPDX license declared by the source project, from an independent live query. |
-| `sink_repo_level_license` | String (SPDX) | Repository-level SPDX license declared by the destination project, from an independent live query. |
-| `automated_classifier_category` | Integer (1–4) | The automated classifier's output (formerly `cross_val_category`). |
-| `automated_classifier_message` | String | Descriptive explanation for that category (formerly `cross_val_message`). |
-| `human_rating_1` | Integer (1–4) | Classification assigned by Expert Annotator 1 (formerly `human_annotator_1`). |
-| `human_rating_2` | Integer (1–4) | Classification assigned by Expert Annotator 2 (formerly `human_annotator_2`). |
-| `repo_unreachable` | Boolean | True if either repository 404'd during independent re-verification. |
-| `resolution_category` | Integer (1–5) | The row's resolved category. |
-| `resolution_method` | String | How the row was resolved — see table above. |
-| `pending_review_note` | String | Plain-language note explaining why a row isn't a simple unanimous human agreement. |
+| Column Name | Type                | Description |
+| --- |---------------------| --- |
+| `organization_name` | String              | Enterprise workspace identifier (e.g., Microsoft, Oracle). |
+| `project_type` | Integer             | Internal categorical pipeline tracking identifier. |
+| `hash` | String (Hex)        | Cryptographic structural signature used across the extraction pipeline. |
+| `source_method_name` | String              | Original method identifier at the source repository. |
+| `sink_method_name` | String              | Method identifier at the destination repository. |
+| `source_repository_url` | String (URL)        | Fully qualified URL to the upstream repository. |
+| `sink_repository_url` | String (URL)        | Fully qualified URL to the downstream repository. |
+| `source_file_location` | String              | Source file path and starting line number. |
+| `sink_file_location` | String              | Destination file path and starting line number. |
+| `violation` | String              | License conflict message (e.g., `GPL-2.0-only` incompatible with `GPL-3.0-only`). |
+| `relational_id` | String              | Internal identifier linking extraction sessions. |
+| `source_repo_level_license` | String (SPDX)       | Repository-level SPDX license declared by the source project, from an independent live query. |
+| `sink_repo_level_license` | String (SPDX)       | Repository-level SPDX license declared by the destination project, from an independent live query. |
+| `automated_classifier_category` | Integer (1–4)       | The automated classifier's output (formerly `cross_val_category`). |
+| `automated_classifier_message` | String              | Descriptive explanation for that category (formerly `cross_val_message`). |
+| `human_rating_1` | Integer (1–4)       | Classification assigned by Expert Annotator 1 (formerly `human_annotator_1`). |
+| `human_rating_2` | Integer (1–4)       | Classification assigned by Expert Annotator 2 (formerly `human_annotator_2`). |
+| `repo_unreachable` | Boolean             | True if either repository 404'd during independent re-verification. |
+| `resolution_category` | Integer (1–5)       | The row's resolved category. |
+| `resolution_method` | String              | How the row was resolved — see table above. |
+| `pending_review_note` | String              | Plain-language note explaining why a row isn't a simple unanimous human agreement. |
 
 21 columns total. Verified against the live file: exact name and order match, no columns missing or extra.
 
@@ -144,7 +142,7 @@ Reproduced by `verify_package.ipynb`, computed directly from this file:
 
 | Comparison | N | Raw agreement | Cohen's κ |
 | --- | --- | --- | --- |
-| Human rater 1 vs. human rater 2 (`human_rating_1` vs. `human_rating_2`) | 1,130 | 1,118/1,130 = 98.94% | 0.984 |
+| Human rater 1 vs. human rater 2 (`human_rating_1` vs. `human_rating_2`) | 1,129 | 1,117/1,129 = 98.94% | 0.984 |
 
 All 12 genuine rater disagreements fall at the Category 3/4 boundary (7 rows rated 3 then 4, 5 rows rated 4 then 3).
 
