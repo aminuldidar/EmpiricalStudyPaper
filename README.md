@@ -31,7 +31,7 @@ This package is provided anonymized for double-blind review; the full artifact, 
 | `README.md`                                  | Documentation for the replication package.                                                                                                                             |
 | `MINER_SETUP.md`                             | Operational model of the mining pipeline that produced these datasets (CLI usage, credential policy, hashing, revisit behavior), shared across companion packages.    |
 | `downsized_compliance_empirical_dataset.csv` | Production empirical dataset containing 197,557 method-level reuse records.                                                                                            |
-| `human_validation.csv`                       | Dual-annotated, independently re-verified validation dataset containing 1,129 audited method pairs, used for reporting human-agreement and resolution statistics.      |
+| `human_validation.csv`                       | Dual-annotated, independently re-verified validation dataset containing 1,130 audited method pairs, used for reporting human-agreement and resolution statistics.      |
 | `compatibility_matrix.csv` / `.png`          | The top-5 directional license-compatibility matrix reported in the paper, and the figure rendered from it.                                                             |
 | `incompatibility_matrix.csv` / `.png`        | The top-5 directional license-incompatibility matrix reported in the paper, and the figure rendered from it.                                                           |
 | `full_compliance_empirical_dataset.csv`       | **Hosted on Zenodo: [DOI PLACEHOLDER, fill in after upload].** The full 530,132-record corpus the two matrices above are computed from. Not included here because it exceeds GitHub's 100MB per-file limit without Git LFS; Zenodo supports it directly (up to 50GB per file). |
@@ -73,7 +73,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 **Description**
 
-The complete dual-annotated validation corpus contains **1,129** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
+The complete dual-annotated validation corpus contains **1,130** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
 
 **Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output).
 
@@ -82,8 +82,8 @@ The complete dual-annotated validation corpus contains **1,129** method pairs in
 | Column Name | Type | Description |
 | --- | --- | --- |
 | `repo_unreachable` | Boolean | True if either repository returned 404 during independent re-verification (repository since deleted, renamed, or moved: "digital decay"). |
-| `resolution_category` | Integer (1–5) | The row's resolved category. Populated for all 1,129 rows. |
-| `resolution_method` | String | `unanimous_human_agreement` (1,111 rows: the two human raters agreed), `resolved_by_author_review` (12 rows: genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows, see below), or `possible_detector_limitation_unverified` (1 row, a discrepancy explained by a known GitHub license-detector limitation rather than an annotator error). |
+| `resolution_category` | Integer (1–5) | The row's resolved category. Populated for all 1,130 rows. |
+| `resolution_method` | String | `unanimous_human_agreement` (1,112 rows: the two human raters agreed), `resolved_by_author_review` (12 rows: genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows, see below), or `possible_detector_limitation_unverified` (1 row, a discrepancy explained by a known GitHub license-detector limitation rather than an annotator error). |
 | `pending_review_note` | String | Plain-language note explaining why a row isn't a simple unanimous human agreement; does not imply which original rating is correct. |
 
 ### Full schema (self-contained, not a diff)
@@ -126,7 +126,7 @@ Reproduced by `verify_package.ipynb`, computed directly from this file:
 
 | Comparison | N | Raw agreement | Cohen's κ |
 | --- | --- | --- | --- |
-| Human rater 1 vs. human rater 2 (`human_rating_1` vs. `human_rating_2`) | 1,129 | 1,117/1,129 = 98.94% | 0.984 |
+| Human rater 1 vs. human rater 2 (`human_rating_1` vs. `human_rating_2`) | 1,130 | 1,118/1,130 = 98.94% | 0.984 |
 
 All 12 genuine rater disagreements fall at the Category 3/4 boundary (7 rows rated 3 then 4, 5 rows rated 4 then 3).
 
