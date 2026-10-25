@@ -24,7 +24,7 @@ This package is provided anonymized for double-blind review; the full artifact, 
 └── LICENSE
 ```
 
-**Not included in this git repository, hosted separately on Zenodo (too large for a plain GitHub file — see below):** `full_compliance_empirical_dataset.csv`.
+**Not included in this git repository, hosted separately on Zenodo (too large for a plain GitHub file; see below):** `full_compliance_empirical_dataset.csv`.
 
 | File                                         | Description                                                                                                                                                            |
 | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,7 +34,7 @@ This package is provided anonymized for double-blind review; the full artifact, 
 | `human_validation.csv`                       | Dual-annotated, independently re-verified validation dataset containing 1,129 audited method pairs, used for reporting human-agreement and resolution statistics.      |
 | `compatibility_matrix.csv` / `.png`          | The top-5 directional license-compatibility matrix reported in the paper, and the figure rendered from it.                                                             |
 | `incompatibility_matrix.csv` / `.png`        | The top-5 directional license-incompatibility matrix reported in the paper, and the figure rendered from it.                                                           |
-| `full_compliance_empirical_dataset.csv`       | **Hosted on Zenodo: [DOI PLACEHOLDER — fill in after upload].** The full 530,132-record corpus the two matrices above are computed from. Not included here because it exceeds GitHub's 100MB per-file limit without Git LFS; Zenodo supports it directly (up to 50GB per file). |
+| `full_compliance_empirical_dataset.csv`       | **Hosted on Zenodo: [DOI PLACEHOLDER, fill in after upload].** The full 530,132-record corpus the two matrices above are computed from. Not included here because it exceeds GitHub's 100MB per-file limit without Git LFS; Zenodo supports it directly (up to 50GB per file). |
 | `data_analysis_script.ipynb`                 | Jupyter notebook reproducing the empirical analyses, statistical summaries, tables, and evaluation results reported in the paper. Requires `full_compliance_empirical_dataset.csv` (from Zenodo, see above) for the matrix-generating cells.                                      |
 | `DSR_engine.py`                              | Python implementation of the DSR (Detection, Similarity, and Reasoning) engine used to identify license compliance violations and generate compliance classifications. |
 | `verify_package.ipynb`                       | Jupyter notebook for verifying the replication package by loading the datasets, reproducing the reported benchmark metrics, and validating the experimental pipeline.  |
@@ -75,7 +75,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 The complete dual-annotated validation corpus contains **1,129** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
 
-**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. During replication-package validation, several of its columns were found to be unreliable or redundant and were dropped rather than shipped; others were renamed for clarity. Both are documented below so the cleaning decisions are auditable without requiring the raw file itself.
+**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. During replication-package validation, several of its columns were found to be unreliable or redundant and were dropped rather than shipped, documented below so the cleaning decisions are auditable without requiring the raw file itself.
 
 **Columns from the raw annotation process not included here, and why**
 
@@ -85,21 +85,13 @@ The complete dual-annotated validation corpus contains **1,129** method pairs in
 | `agreement_flag`, `human_agreement` | Confirmed during validation to track `source_query_project`, not genuine human-vs-automated agreement, despite the naming. |
 | `source_license`, `sink_license` | Confirmed to be parsed back out of the `violation` message text rather than independently detected; redundant with `violation`, which is retained. |
 
-**Columns renamed from the raw annotation process**
-
-| Original name | New name |
-| --- | --- |
-| `cross_val_category` | `automated_classifier_category` |
-| `cross_val_message` | `automated_classifier_message` |
-| `human_annotator_1`, `human_annotator_2` | `human_rating_1`, `human_rating_2` |
-
 **Columns added**
 
 | Column Name | Type | Description |
 | --- | --- | --- |
-| `repo_unreachable` | Boolean | True if either repository returned 404 during independent re-verification (repository since deleted, renamed, or moved — "digital decay"). |
+| `repo_unreachable` | Boolean | True if either repository returned 404 during independent re-verification (repository since deleted, renamed, or moved: "digital decay"). |
 | `resolution_category` | Integer (1–5) | The row's resolved category. Populated for all 1,129 rows. |
-| `resolution_method` | String | `unanimous_human_agreement` (1,111 rows — the two human raters agreed), `resolved_by_author_review` (12 rows — genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows — see below), or `possible_detector_limitation_unverified` (1 row — a discrepancy explained by a known GitHub license-detector limitation, not an annotator error). |
+| `resolution_method` | String | `unanimous_human_agreement` (1,111 rows: the two human raters agreed), `resolved_by_author_review` (12 rows: genuine annotator disagreement, Category 3 vs. 4, resolved by direct re-review), `possible_temporal_drift_unverified` (5 rows, see below), or `possible_detector_limitation_unverified` (1 row, a discrepancy explained by a known GitHub license-detector limitation rather than an annotator error). |
 | `pending_review_note` | String | Plain-language note explaining why a row isn't a simple unanimous human agreement; does not imply which original rating is correct. |
 
 ### Full schema (self-contained, not a diff)
@@ -119,22 +111,22 @@ The complete dual-annotated validation corpus contains **1,129** method pairs in
 | `relational_id` | String              | Internal identifier linking extraction sessions. |
 | `source_repo_level_license` | String (SPDX)       | Repository-level SPDX license declared by the source project, from an independent live query. |
 | `sink_repo_level_license` | String (SPDX)       | Repository-level SPDX license declared by the destination project, from an independent live query. |
-| `automated_classifier_category` | Integer (1–4)       | The automated classifier's output (formerly `cross_val_category`). |
-| `automated_classifier_message` | String              | Descriptive explanation for that category (formerly `cross_val_message`). |
-| `human_rating_1` | Integer (1–4)       | Classification assigned by Expert Annotator 1 (formerly `human_annotator_1`). |
-| `human_rating_2` | Integer (1–4)       | Classification assigned by Expert Annotator 2 (formerly `human_annotator_2`). |
+| `automated_classifier_category` | Integer (1–4)       | The automated classifier's output. |
+| `automated_classifier_message` | String              | Descriptive explanation for that category. |
+| `human_rating_1` | Integer (1–4)       | Classification assigned by Expert Annotator 1. |
+| `human_rating_2` | Integer (1–4)       | Classification assigned by Expert Annotator 2. |
 | `repo_unreachable` | Boolean             | True if either repository 404'd during independent re-verification. |
 | `resolution_category` | Integer (1–5)       | The row's resolved category. |
-| `resolution_method` | String              | How the row was resolved — see table above. |
+| `resolution_method` | String              | How the row was resolved; see table above. |
 | `pending_review_note` | String              | Plain-language note explaining why a row isn't a simple unanimous human agreement. |
 
 21 columns total. Verified against the live file: exact name and order match, no columns missing or extra.
 
-**On the 5 `possible_temporal_drift_unverified` rows**: a Deutsche Telekom fork relationship with upstream `thingsboard/thingsboard` was recorded as Apache-2.0 on both sides. The live upstream `LICENSE` file is now a Business Source License. An Internet Archive snapshot from 2026-01-05 confirms the file still read Apache License at that date, but no snapshot exists between then and the present, so whether this specific relationship was affected cannot be confirmed from public records alone — reported as a possible, unverifiable instance of drift, not a correction.
+**On the 5 `possible_temporal_drift_unverified` rows**: a Deutsche Telekom fork relationship with upstream `thingsboard/thingsboard` was recorded as Apache-2.0 on both sides. The upstream `LICENSE` file is now a Business Source License. An Internet Archive snapshot from 2026-01-05 still shows Apache License at that date, and we could not find a later snapshot before the present, so we can't pin down exactly when the relicensing happened or whether it touched this relationship. We flag it as a possible case of drift here; we did not change the recorded value.
 
-**On the 1 `possible_detector_limitation_unverified` row**: GitHub's license detector failed to recognize a real `LICENSE` file due to non-standard header text — a known, confirmed limitation (see the paper's limitations section) — so the recorded value was kept rather than "corrected" to the detector's output.
+**On the 1 `possible_detector_limitation_unverified` row**: GitHub's license detector failed to recognize a real `LICENSE` file due to non-standard header text, a known, confirmed limitation (see the paper's limitations section). We kept the recorded value rather than "correcting" it to the detector's output.
 
-**On the 12 `resolved_by_author_review` rows**: the two original human raters split 3 vs. 4 on all 12. Each was re-reviewed directly against the current repository: in every case the license is determinable from the file itself but not from the repository's own metadata, which the automated classifier relies on — resolved to Category 5 (Undetermined), not 3 or 4. See `blind_review_sheet.csv` for the per-row detail.
+**On the 12 `resolved_by_author_review` rows**: the two original human raters split 3 vs. 4 on all 12. Each was re-reviewed directly against the current repository: in every case the license is determinable from the file itself but not from the repository's own metadata, which the automated classifier relies on. We resolved these to Category 5 (Undetermined) rather than 3 or 4. See `blind_review_sheet.csv` for the per-row detail.
 
 ### Validation Results
 
