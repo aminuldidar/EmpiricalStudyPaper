@@ -75,7 +75,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 The complete dual-annotated validation corpus contains **1,129** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
 
-**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. A few of its columns were dropped rather than shipped, since they were found during replication-package validation to be unreliable or redundant.
+**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package.
 
 **Columns added**
 
