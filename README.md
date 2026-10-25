@@ -150,7 +150,7 @@ All 12 genuine rater disagreements fall at the Category 3/4 boundary (7 rows rat
 
 # ⚙️ Illustrative Usage: The Mining Pipeline
 
-The datasets in this package are the output of a method-level mining and indexing pipeline. The pipeline's own source code is not included in this anonymized package, but its operational model -- CLI usage, credential policy, hashing, and revisit behavior -- is documented in **[`MINER_SETUP.md`](./MINER_SETUP.md)**, shared across this project's companion replication packages so the description stays identical everywhere it appears. The structural signature it produces is carried here as the `hash` column.
+The datasets in this package are the output of a method-level mining and indexing pipeline. The pipeline's own source code is not included in this anonymized package, but its operational model (CLI usage, credential policy, hashing, and revisit behavior) is documented in **[`MINER_SETUP.md`](./MINER_SETUP.md)**, shared across this project's companion replication packages so the description stays identical everywhere it appears. The structural signature it produces is carried here as the `hash` column.
 
 ---
 
@@ -187,7 +187,7 @@ print(validation["resolution_method"].value_counts())
 
 # License
 
-* **Code** (`DSR_engine.py`, `data_analysis_script.ipynb`, `verify_package.ipynb`): released under the **MIT License** -- see [`LICENSE`](./LICENSE).
+* **Code** (`DSR_engine.py`, `data_analysis_script.ipynb`, `verify_package.ipynb`): released under the **MIT License** (see [`LICENSE`](./LICENSE)).
 * **Data** (`downsized_compliance_empirical_dataset.csv`, `human_validation.csv`, `compatibility_matrix.csv`/`.png`, `incompatibility_matrix.csv`/`.png`, `blind_review_sheet.csv`, and the Zenodo-hosted `full_compliance_empirical_dataset.csv`): released under **CC-BY 4.0** (https://creativecommons.org/licenses/by/4.0/).
 
 Repository URLs contained within the datasets refer to their original upstream open-source projects and remain subject to their respective licenses; this package's license applies to our own derived datasets and code, not to the third-party code those URLs point to.

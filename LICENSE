@@ -27,4 +27,4 @@ data_analysis_script.ipynb, verify_package.ipynb). The datasets
 (downsized_compliance_empirical_dataset.csv, human_validation.csv,
 compatibility_matrix.csv/.png, incompatibility_matrix.csv/.png,
 blind_review_sheet.csv, and the Zenodo-hosted full_compliance_empirical_dataset.csv)
-are released separately under CC-BY 4.0 -- see the "License" section of README.md.
+are released separately under CC-BY 4.0; see the "License" section of README.md.
