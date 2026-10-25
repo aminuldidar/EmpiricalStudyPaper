@@ -75,15 +75,7 @@ This dataset is used to study license incompatibilities, licensing drift, and pr
 
 The complete dual-annotated validation corpus contains **1,129** method pairs independently reviewed by human experts, plus an independent live re-verification against current repository data. This is the dataset used to evaluate human agreement and automated compliance classification performance.
 
-**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. During replication-package validation, several of its columns were found to be unreliable or redundant and were dropped rather than shipped, documented below so the cleaning decisions are auditable without requiring the raw file itself.
-
-**Columns from the raw annotation process not included here, and why**
-
-| Column not included | Reason |
-| --- | --- |
-| `source_query_project` | Internal pipeline grouping variable; confirmed unreliable as a ground-truth signal. |
-| `agreement_flag`, `human_agreement` | Confirmed during validation to track `source_query_project`, not genuine human-vs-automated agreement, despite the naming. |
-| `source_license`, `sink_license` | Confirmed to be parsed back out of the `violation` message text rather than independently detected; redundant with `violation`, which is retained. |
+**Provenance note**: this file is derived from an internal raw annotation file (dual human annotators plus the automated classifier's raw output) retained privately by the authors but not included in this package. A few of its columns were dropped rather than shipped, since they were found during replication-package validation to be unreliable or redundant.
 
 **Columns added**
 
