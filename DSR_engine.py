@@ -8,7 +8,7 @@ LICENSE_LIST = [
     "GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0-only", "0BSD", "ECL-2.0",
     "LGPL-2.1-only", "LGPL-3.0-only", "AGPL-3.0-only", "GPL-3.0-or-later",
     "EPL-1.0", "EPL-2.0", "CDDL-1.0", "AFL-3.0", "OSL-3.0", "CC-BY-4.0", "CC-BY-NC-4.0",
-    "EUPL-1.1", "EUPL-1.2", "Python-2.0", "PostgreSQL", "MIT-0", "SQLite", "WTFPL",
+    "Python-2.0", "PostgreSQL", "MIT-0", "SQLite", "WTFPL",
     "CC0-1.0", "CC-BY-SA-4.0", "Artistic-2.0", "UPL-1.0", "Zlib", "ISC", "MS-PL", 
     "Proprietary", "Unknown", "Unlicensed", "Unlicense", "Custom"
 ]
@@ -96,12 +96,6 @@ license_mapping = {
     
     "cc-by-nc": "CC-BY-NC-4.0",
     "CC-BY-NC-4.0": "CC-BY-NC-4.0",
-
-    "EUPL-1.1":"EUPL-1.1",
-    "eupl-1.1": "EUPL-1.1",
-
-    "EUPL-1.2": "EUPL-1.2",
-    "eupl-1.2": "EUPL-1.2",
 
     # GPL v2 variants
     "GPL-2.0": "GPL-2.0-only",
